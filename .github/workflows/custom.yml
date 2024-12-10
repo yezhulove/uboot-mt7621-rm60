@@ -15,17 +15,17 @@ on:
         description: 'MTD Partition Table'
         required: true
         type: string
-        default: '192k(u-boot),64k(u-boot-env),64k(factory),-(firmware)'
+        default: '192k(u-boot),64k(u-boot-env),256k(factory),-(firmware)'
       kernel_offset:
         description: 'Kernel Load Address'
         required: true
         type: string
-        default: '0x50000'
+        default: '0x90000'
       reset_pin:
         description: 'Reset Button GPIO'
         required: true
         type: number
-        default: -1
+        default: 18
       sysled_pin:
         description: 'System LED GPIO'
         required: true
@@ -60,6 +60,7 @@ on:
         - 'DDR3-256MiB'
         - 'DDR3-512MiB'
         - 'DDR3-128MiB-KGD'
+        default: 'DDR2-128MiB'
       oldparam:
         description: 'Use Old DDR Timing Parameters'
         required: true
@@ -72,6 +73,7 @@ on:
         options:
         - '57600'
         - '115200'
+        default: '115200'
 
 jobs:
   build:
