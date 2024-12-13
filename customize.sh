@@ -28,6 +28,10 @@ fi
 DEFCONFIG="configs/mt7621_build_defconfig"
 if [ "$1" = 'NOR' ]; then
 	cp configs/mt7621_nor_template_defconfig ${DEFCONFIG}
+	echo -e "CONFIG_ENV_OFFSET=0x40000" >> ${DEFCONFIG}
+	echo -e "CONFIG_ENV_IS_IN_SPI_FLASH=y" >> ${DEFCONFIG}
+	echo -e "CONFIG_ENV_SECT_SIZE=0x10000" >> ${DEFCONFIG}
+	echo -e "CONFIG_ENV_ADDR_REDUND=y" >> ${DEFCONFIG} 
 	echo -e "CONFIG_MTDPARTS_DEFAULT=\"mtdparts=raspi:$2\"" >> ${DEFCONFIG}
 elif [ "$1" = 'NAND' ]; then
 	cp configs/mt7621_nand_template_defconfig ${DEFCONFIG}
